@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: Install Key by Ansible
+    authorized_key:
+      user: root
+      state: present
+      key: '{{ item }}'
+    with_file:
+      - ~/.ssh/id_rsa.pub
