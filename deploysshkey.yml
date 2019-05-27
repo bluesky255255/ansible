@@ -1,7 +1,9 @@
 ---
-- hosts: all
+- name: Install key by Ansible
+  hosts: all
+
   tasks:
-  - name: Install Key by Ansible
+  - name: Ensure Key in ~/.ssh/id_rsa.pub
     authorized_key:
       user: root
       state: present
