@@ -1,8 +1,10 @@
 ---
-- name: Add execution_environment
-  hosts: aap2.lab.tingnkai.com
+---
+- name: Configure AAP
+  hosts: localhost
+  gather_facts: false
   tasks: 
     - name: Add EE to the controller instance
-      execution_environment:
+      ansible.controller.execution_environment:
         name: "OCP4-ee"
         image: "hub2.lab.tingnkai.com/ee-ocp4:latest"
