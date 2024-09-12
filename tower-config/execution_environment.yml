@@ -1,0 +1,8 @@
+---
+- name: Add execution_environment
+  hosts: controllers
+  tasks: 
+    - name: Add EE to the controller instance
+      execution_environment:
+        name: "tingnkai-ee"
+        image: "hub2.lab.tingnkai.com/tingnkai-ee:v2.0"
