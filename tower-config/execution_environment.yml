@@ -1,6 +1,6 @@
 ---
 - name: Add execution_environment
-  hosts: controllers
+  hosts: aap2.lab.tingnkai.com
   tasks: 
     - name: Add EE to the controller instance
       execution_environment:
