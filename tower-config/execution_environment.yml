@@ -1,6 +1,8 @@
 ---
 - name: Add execution_environment
   hosts: aap2.lab.tingnkai.com
+  collections:
+    - ansible.controller
   tasks: 
     - name: Add EE to the controller instance
       execution_environment:
