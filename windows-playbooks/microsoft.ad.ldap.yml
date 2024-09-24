@@ -5,7 +5,7 @@ port: 389
 
 auth_protocol: kerberos
 
-search_base: OU=Servers,DC=tingnkai,DC=com
+search_base: CN=Computers,DC=tingnkai,DC=com
 
 #filter: (sAMAccountName=win*)
 
