@@ -2,10 +2,8 @@
 - name: simple test windows connection
   hosts: win10pc.tingnkai.com
 
-  collections:
-    - community.windows
   tasks:
     - name: Compress the directories contents
       community.windows.win_zip:
-        src: D:\test\*
-        dest: D\test.zip
+        src: 'D:\test\*'
+        dest: 'D\test.zip'
