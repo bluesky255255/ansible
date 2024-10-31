@@ -4,7 +4,6 @@
 
   collections:
     - community.windows
-o
   tasks:
     - name: Compress the directories contents
       community.windows.win_zip:
