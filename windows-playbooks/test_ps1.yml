@@ -1,0 +1,9 @@
+---
+- name: simple test windows connection
+  hosts: win02.tingnkai.com
+
+  tasks:
+    - name: Download the ps1 file from web
+      ansible.windows.win_get_url:
+        url: http://s3.tingnkai.com/test.ps1
+        dest: C:\Temp\test.ps1
