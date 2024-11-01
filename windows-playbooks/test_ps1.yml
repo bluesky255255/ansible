@@ -9,4 +9,8 @@
         dest: C:\Temp\test.ps1
 
     - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
-      ansible.windows.win_shell: C:\Temp\test.ps1
+      ansible.windows.win_shell: C:\Temp\test.ps1 >> C:\Temp\test.txt
+
+    - name: Display message.
+      community.windows.win_msg:
+        msg: 'message'
