@@ -5,7 +5,7 @@
   tasks:
     - name: Download the ps1 file from web
       ansible.windows.win_get_url:
-        url: http://s3.tingnkai.com/test.ps1
+        url: http://s3.tingnkai.com/helloworld.ps1
         dest: C:\Temp\test.ps1
 
     - name: Execute a command in the remote shell, stdout goes to the specified file on the remote
