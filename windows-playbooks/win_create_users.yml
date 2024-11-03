@@ -4,10 +4,10 @@
   tasks:
     - name: Create user
       ansible.windows.win_user:
-        name: {{ item.name }}
+        name: {{ items.name }}
         password: W}0Vnq7o}HnN
         state: present
-        description: {{ item.description }}
+        description: {{ items.description }}
         groups:
           - Users
       loop:
