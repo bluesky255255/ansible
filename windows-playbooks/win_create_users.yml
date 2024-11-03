@@ -1,0 +1,16 @@
+--- 
+- name: Create local users
+  hosts: win01.tingnkai.com
+  tasks:
+    - name: Create user
+      ansible.windows.win_user:
+        name: {{ item.name }}
+        password: W}0Vnq7o}HnN
+        state: present
+        description: {{ item.description }}
+        groups:
+          - Users
+      loop:
+        - { name: bob, description: 'Username for bob' }
+        - { name: tom, description: 'Username for tom' }
+        - { name: paul, description: 'Username for paul' }

@@ -1,0 +1,17 @@
+---
+- name: test set fact
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: set fact
+      set_fact:
+        extract_key: "{{ lookup('ansible.builtin.file', 'name.txt').splitlines() | sort }}"
+
+    - name: set fact a-g
+      set_fact:
+        list_1: "{{ extract_key | select('match', '^[A-G]*') }}"
+
+    - name: Display output
+      debug: msg="firstname {{ item | split | first }} familyname {{ item | split | last }}"
+      loop: "{{ list_1 }}"
