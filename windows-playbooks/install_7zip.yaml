@@ -40,8 +40,13 @@
       register: install_result
     
     - ansible.builtin.debug: 
-        msg: "{{ install_result.stdout }}"
+        msg: "{{ install_result.invocation.expected_return_code }}"
         
+    - name: Send smtp
+      ansible.windows.win_powershell:
+        script: |
+          Send-MailMessage -To 'kaicheng@tingnkai.com' -From 'kaicheng@tingnkai.com' -Subject 'Start install 7zip' -Body 'Start install 7zip!' -SmtpServer 'smtp.tingnkai.com' -Port 25
+      when: install_result.rc not in [0]
 
     - name: Uninstall 7zip
       ansible.windows.win_package:
