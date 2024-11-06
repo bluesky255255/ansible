@@ -1,6 +1,8 @@
 ---
 - name: install 7zip
   hosts: win02.tingnkai.com
+  vars:
+    sevenzip_uninstall: false
   tasks:
     - name: Create directory on localhost
       ansible.builtin.file:
