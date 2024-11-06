@@ -40,7 +40,7 @@
       register: install_result
     
     - ansible.builtin.debug: 
-        msg: {{ install_result.stdout }}
+        msg: "{{ install_result.stdout }}"
         
 
     - name: Uninstall 7zip
