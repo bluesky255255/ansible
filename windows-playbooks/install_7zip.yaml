@@ -36,6 +36,12 @@
         path: C:\ansible\7z2408-x64.msi
         state: present
       when: not sevenzip_uninstall
+      ignore_errors: true
+      register: install_result
+    
+    - ansible.builtin.debug:
+      msg: {{ install_result }}
+        
 
     - name: Uninstall 7zip
       ansible.windows.win_package:
