@@ -1,0 +1,48 @@
+---
+- name: install 7zip
+  hosts: win02.tingnkai.com
+  tasks:
+    - name: Create directory on localhost
+      ansible.builtin.file:
+        path: /tmp/ansible
+        state: directory
+      delegate_to: localhost
+
+    - name: Download 7zip from URL
+      ansible.builtin.get_url:
+        url: https://7-zip.org/a/7z2408-x64.msi
+        dest: /tmp/ansible
+      delegate_to: localhost
+
+    - name: Create directory
+      ansible.windows.win_file:
+        path: C:\ansible
+        state: directory
+
+    - name: Copy 7zip from localhost to windows server
+      ansible.windows.win_copy:
+        src: /tmp/ansible/7z2408-x64.msi
+        dest: C:\ansible\7z2408-x64.msi
+
+    - name: Install 7zip
+      ansible.windows.win_package:
+        path: C:\ansible\7z2408-x64.msi
+        state: present
+      when: not sevenzip_uninstall
+
+    - name: Uninstall 7zip
+      ansible.windows.win_package:
+        path: C:\ansible\7z2408-x64.msi
+        state: absent
+      when: sevenzip_uninstall
+
+    - name: Remove 7zip install folder
+      ansible.windows.win_file:
+        path: C:\ansible
+        state: absent
+
+    - name: Remove 7zip temp destination
+      ansible.builtin.file:
+        path: /tmp/ansible
+        state: absent
+      delegate_to: localhost

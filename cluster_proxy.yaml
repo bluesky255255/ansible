@@ -1,0 +1,16 @@
+apiVersion: config.openshift.io/v1
+kind: Proxy
+metadata:
+  creationTimestamp: "2024-10-25T10:49:44Z"
+  generation: 1
+  name: cluster
+  resourceVersion: "546"
+  uid: f02b7943-31dd-4746-843e-c68b9beefce8
+spec:
+  httpProxy: http://192.168.155.98:3128
+  noProxy: tingnkai.com,192.168.155.0/24,192.168.10.0/24,192.168.20.0/24,192.168.30.0/24,192.168.40.0/24,.ocp4.tingnkai.com,10.128.0.0/14,172.30.0.0/16,192.168.155.0/24
+  trustedCA:
+    name: user-ca-bundle
+status:
+  httpProxy: http://192.168.155.98:3128
+  noProxy: .cluster.local,.ocp4.tingnkai.com,.svc,10.128.0.0/14,127.0.0.1,172.30.0.0/16,192.168.10.0/24,192.168.155.0/24,192.168.20.0/24,192.168.30.0/24,192.168.40.0/24,api-int.ocp4.tingnkai.com,localhost,tingnkai.com
