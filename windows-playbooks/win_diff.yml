@@ -3,9 +3,9 @@
   hosts: all
   tasks:
     - name: Create directory structure
-       ansible.windows.win_file:
-       path: C:\Temp\
-       state: directory
+      ansible.windows.win_file:
+        path: C:\Temp\
+        state: directory
 
     - name: Set the contents of a win01
       ansible.windows.win_copy:
