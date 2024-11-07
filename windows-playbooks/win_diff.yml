@@ -1,0 +1,23 @@
+---
+- name: simple test windows connection
+  hosts: all
+  tasks:
+    - name: Set the contents of a win01
+      ansible.windows.win_copy:
+        content: win01
+        dest: C:\Temp\test.txt
+      when: ansible_fqdn == "win01.tingnkai.com"
+
+    - name: Set the contents of a win02
+      ansible.windows.win_copy:
+        content: win02
+        dest: C:\Temp\test.txt
+      when: ansible_fqdn == "win02.tingnkai.com"
+      
+    - name: Set the contents of a other
+      ansible.windows.win_copy:
+        content: other
+        dest: C:\Temp\test.txt
+      when: 
+        - ansible_fqdn != "win01.tingnkai.com"
+        - ansible_fqdn != "win02.tingnkai.com"
