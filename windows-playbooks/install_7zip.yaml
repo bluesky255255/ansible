@@ -40,7 +40,7 @@
       register: install_result
     
     - ansible.builtin.debug: 
-        msg: "{{ install_result }}"
+        var: "{{ install_result }}"
         
     - name: Send smtp
       ansible.windows.win_powershell:
