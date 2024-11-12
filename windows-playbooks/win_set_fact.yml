@@ -8,10 +8,19 @@
       set_fact:
         extract_key: "{{ lookup('ansible.builtin.file', 'name.txt').splitlines() | sort }}"
 
-    - name: set fact a-g
+    - name: set fact a-c
       set_fact:
-        list_1: "{{ extract_key | select('match', '^[A-G]*') }}"
+        list_1: "{{ extract_key | select('regex', '^[A-C]') }}"
+ 
+    - name: set fact d-f
+      set_fact:
+        list_2: "{{ extract_key | select('match', '^[D-F]') }}"
+
 
     - name: Display output
       debug: msg="firstname {{ item | split | first }} familyname {{ item | split | last }}"
       loop: "{{ list_1 }}"
+
+    - name: Display output
+      debug: msg="firstname {{ item | split | first }} familyname {{ item | split | last }}"
+      loop: "{{ list_2 }}"
