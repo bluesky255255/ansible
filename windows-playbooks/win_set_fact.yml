@@ -10,7 +10,7 @@
 
     - name: set fact a-c
       set_fact:
-        list_1: "{{ extract_key | select('regex', '^[A-C]') }}"
+        list_1: "{{ extract_key | select('regex', '^[A-D]') }}"
  
     - name: set fact d-f
       set_fact:
