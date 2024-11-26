@@ -1,9 +1,8 @@
 ---
 - name: testing
   hosts: all
+
   tasks:
-    - name: Display resource statistics (routeros)
-      community.network.routeros_command:
-        commands: /system resource print
-      register: routeros_resources
-      when: ansible_network_os == 'community.network.routeros'
+    - name: Run command on remote devices
+      community.routeros.command:
+        commands: /system routerboard print
