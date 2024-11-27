@@ -1,8 +1,9 @@
 ---
-- name: testing
-  hosts: all
-
+- name: RouterOS test with network_cli connection
+  hosts: routers
+  gather_facts: false
   tasks:
-    - name: Run command on remote devices
-      community.routeros.command:
-        commands: /system routerboard print
+
+  - name: Run command on remote devices
+    community.routeros.command:
+      commands: /system routerboard print
