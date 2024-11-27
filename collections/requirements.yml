@@ -3,4 +3,3 @@ collections:
   - name: microsoft.ad
   - name: community.windows
   - name: community.routeros
-  - name: ansible.netcommon.network_cli
