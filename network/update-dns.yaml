@@ -1,1 +1,13 @@
-
+---
+- name: 
+  hosts: all
+  tasks:
+    - name: Update two IPv4 DNS server addresses
+      community.general.nmcli:
+        conn_name: ens192
+        type: ethernet
+        dns4:
+          - 192.168.155.10
+          - 192.168.155.11
+        dns4_options: 
+        state: present
