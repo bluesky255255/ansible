@@ -8,10 +8,10 @@
         conn_name: ens192
         type: ethernet
         dns4:
-          - 192.168.155.11
           - 192.168.155.10
+          - 8.8.8.8
         dns4_options: 
-          - timeout:1
-          - attempts:1
+          - timeout:2
+          - attempts:2
         state: up
         conn_reload: true
