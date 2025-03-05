@@ -1,6 +1,7 @@
 ---
 - name: 
-  hosts: all
+  hosts: linux
+  gather_facts: true
   tasks:
     - name: Update two IPv4 DNS server addresses
       community.general.nmcli:
