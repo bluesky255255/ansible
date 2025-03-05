@@ -10,5 +10,5 @@
         dns4:
           - 192.168.155.10
           - 192.168.155.11
-        dns4_options: 
+        dns4_options: "timeout:1 attempts:1"
         state: present
