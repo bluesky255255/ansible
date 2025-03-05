@@ -3,3 +3,4 @@ collections:
   - name: microsoft.ad
   - name: community.windows
   - name: community.routeros
+  - name: community.general
