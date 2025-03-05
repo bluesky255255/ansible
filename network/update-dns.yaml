@@ -1,5 +1,5 @@
 ---
-- name: 
+- name: Update DNS records
   hosts: linux
   gather_facts: true
   tasks:
