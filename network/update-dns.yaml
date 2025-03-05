@@ -13,5 +13,5 @@
         dns4_options: 
           - timeout:1
           - attempts:1
-        state: present
+        state: up
         conn_reload: true
