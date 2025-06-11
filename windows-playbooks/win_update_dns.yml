@@ -1,0 +1,25 @@
+---
+- name: update Win DNS records
+  hosts: all
+  vars:
+    target_name: "kai"
+    target_type: "A"
+    target_ip: "1.2.3.4"
+    target_zone: "tingnkai.com"
+  gather_facts: false
+  become: yes
+  become_method: runas
+  tasks:
+    - name: Ansible Ping
+      ansible.windows.win_ping:
+
+    - name: Update DNS recrod
+      community.windows.win_dns_record:
+        name: "{{ target_name }}"
+        type:  "{{ target_type }}"
+        value:  "{{ target_ip }}"
+        zone: "{{ target_zone }}"
+      register: add_record
+
+    - debug:
+        var: add_record
