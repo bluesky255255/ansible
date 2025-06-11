@@ -7,8 +7,7 @@
     target_ip: "1.2.3.4"
     target_zone: "tingnkai.com"
   gather_facts: false
-  become: yes
-  become_method: runas
+
   tasks:
     - name: Ansible Ping
       ansible.windows.win_ping:
