@@ -24,6 +24,7 @@
 
     - name: Remove static record
       ansible.windows.win_dns_record:
+        computer_name: "dc01.tingnkai.com"
         name: "{{ target_name }}"
         type: "{{ target_type }}"
         state: absent
