@@ -14,7 +14,7 @@
 
     - name: Update DNS recrod
       ansible.windows.win_dns_record:
-        computer_name: "dc01.tingnkai.com"
+        computer_name: "{{ target_zone }}"
         name: "{{ target_name }}"
         type:  "{{ target_type }}"
         value:  "{{ target_ip }}"
@@ -24,7 +24,7 @@
 
     - name: Remove static record
       ansible.windows.win_dns_record:
-        computer_name: "dc01.tingnkai.com"
+        computer_name: "{{ target_zone }}"
         name: "{{ target_name }}"
         type: "{{ target_type }}"
         state: absent
