@@ -19,7 +19,17 @@
         type:  "{{ target_type }}"
         value:  "{{ target_ip }}"
         zone: "{{ target_zone }}"
-      register: add_record
+      register: record_update
+      tags: not remove
 
+    - name: Remove static record
+      ansible.windows.win_dns_record:
+        name: "{{ target_name }}"
+        type: "{{ target_type }}"
+        state: absent
+        zone: "{{ target_zone }}"
+      register: record_update
+      tags: [ never, remove ]
+      
     - debug:
-        var: add_record
+        var: record_update
