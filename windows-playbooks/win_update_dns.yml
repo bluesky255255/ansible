@@ -13,7 +13,8 @@
       ansible.windows.win_ping:
 
     - name: Update DNS recrod
-      community.windows.win_dns_record:
+      ansible.windows.win_dns_record:
+        computer_name: "dc01.tingnkai.com"
         name: "{{ target_name }}"
         type:  "{{ target_type }}"
         value:  "{{ target_ip }}"
