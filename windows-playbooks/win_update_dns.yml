@@ -22,7 +22,7 @@
 
     - name: Set fact
       ansible.builtin.set_fact:
-        dc_server: "{{ active_ad.output }}"
+        dc_server: "{{ active_ad.output.results[0].item }}"
       when: active_ad.output != None
 
     - name: Update DNS recrod
