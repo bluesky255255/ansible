@@ -22,7 +22,7 @@
 
     - name: Set fact
       ansible.builtin.set_fact:
-        dc_server: "{{ active_ad.output | regex_replace('[\\r\\n\\t]+','') }}"
+        dc_server: "{{ active_ad.output | first }}"
       when: active_ad.output != None
 
     - name: show DC
