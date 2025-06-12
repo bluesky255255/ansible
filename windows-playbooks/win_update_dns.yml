@@ -11,6 +11,12 @@
   tasks:
     - name: Ansible Ping
       ansible.windows.win_ping:
+      
+    - name: Run basic PowerShell script
+      ansible.windows.win_powershell:
+        script: |
+          (Get-ADDomainController).HostName
+      register: active_ad
 
     - name: Update DNS recrod
       ansible.windows.win_dns_record:
