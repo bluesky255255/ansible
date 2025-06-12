@@ -6,21 +6,28 @@
     target_type: "A"
     target_ip: "1.2.3.4"
     target_zone: "tingnkai.com"
+    dc_server: "{{ target_zone }}"
   gather_facts: false
 
   tasks:
     - name: Ansible Ping
       ansible.windows.win_ping:
       
-    - name: Run basic PowerShell script
+    - name: Get current login AD
       ansible.windows.win_powershell:
         script: |
           (Get-ADDomainController).HostName
       register: active_ad
+      ignore_errors: yes
+
+    - name: Set fact
+      ansible.builtin.set_fact:
+        dc_server: "{{ active_ad.output }}"
+      when: active_ad.output != None
 
     - name: Update DNS recrod
       ansible.windows.win_dns_record:
-        computer_name: "{{ target_zone }}"
+        computer_name: "{{ dc_server }}"
         name: "{{ target_name }}"
         type:  "{{ target_type }}"
         value:  "{{ target_ip }}"
@@ -30,7 +37,7 @@
 
     - name: Remove static record
       ansible.windows.win_dns_record:
-        computer_name: "{{ target_zone }}"
+        computer_name: "{{ dc_server }}"
         name: "{{ target_name }}"
         type: "{{ target_type }}"
         state: absent
