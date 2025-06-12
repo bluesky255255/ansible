@@ -22,8 +22,12 @@
 
     - name: Set fact
       ansible.builtin.set_fact:
-        dc_server: "{{ active_ad.output.results[0].item }}"
+        dc_server: "{{ active_ad.output }}"
       when: active_ad.output != None
+
+    - name: show DC
+      debug:
+        var: dc_server
 
     - name: Update DNS recrod
       ansible.windows.win_dns_record:
