@@ -5,6 +5,24 @@
     - name: test win
       win_ping:
 
+    - name: Run PowerShell script with parameters
+      ansible.windows.win_powershell:
+        script: |
+          [CmdletBinding()]
+          param (
+              [String]
+              $Path,
+
+              [Switch]
+              $target
+          )
+          $session = New-PSSession -ComputerName $target
+          Copy-Item -FromSession $session -Path $Path -Destination "C:\Temp"
+          Remove-PSSession -Session $session
+        parameters:
+          target: "dc01.tingnkai.com"
+          Path: "C:\Windows\System32\drivers\etc\hosts"
+
     - name: copy file
       fetch: 
         src=C:/info.txt 
