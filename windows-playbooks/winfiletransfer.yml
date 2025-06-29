@@ -1,6 +1,6 @@
 ---
 - name: simple test windows connection
-  hosts: all
+  hosts: "win01.tingnkai.com"
   vars:
     Path: "C:\\Windows\\System32\\drivers\\etc"
     FileName: "hosts"
@@ -33,11 +33,11 @@
         dest=~/{{ FileName }}
         flat=yes
 
-    - name: Ensure file is absent
-      ansible.windows.win_file:
-        path: "{{ Path }}\\{{ FileName }}"
-        state: absent
-
     - name: test output
       command: cat ~/{{ FileName }}
       delegate_to: localhost
+      
+    - name: Ensure file is absent
+      ansible.windows.win_file:
+        path: "C:\Temp\{{ FileName }}"
+        state: absent
