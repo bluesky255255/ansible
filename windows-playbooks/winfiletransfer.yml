@@ -29,7 +29,7 @@
 
     - name: copy file
       fetch: 
-        src="{{ Path }}\\{{ FileName }}"
+        src="C:\\Temp\\{{ FileName }}"
         dest=~/{{ FileName }}
         flat=yes
 
