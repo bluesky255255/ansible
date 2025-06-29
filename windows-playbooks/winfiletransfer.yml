@@ -13,7 +13,7 @@
               [String]
               $Path,
 
-              [Switch]
+              [String]
               $target
           )
           $session = New-PSSession -ComputerName $target
