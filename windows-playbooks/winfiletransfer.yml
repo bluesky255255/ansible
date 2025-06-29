@@ -39,5 +39,5 @@
       
     - name: Ensure file is absent
       ansible.windows.win_file:
-        path: "C:\Temp\{{ FileName }}"
+        path: "C:\\Temp\\{{ FileName }}"
         state: absent
