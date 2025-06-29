@@ -1,6 +1,10 @@
 ---
 - name: simple test windows connection
   hosts: all
+  vars:
+    Path: "C:\\Windows\\System32\\drivers\\etc"
+    FileName: "hosts"
+    Target: "dc01.tingnkai.com"
   tasks:
     - name: test win
       win_ping:
@@ -20,15 +24,20 @@
           Copy-Item -FromSession $session -Path $Path -Destination "C:\Temp"
           Remove-PSSession -Session $session
         parameters:
-          target: "dc01.tingnkai.com"
-          Path: "C:\\Windows\\System32\\drivers\\etc\\hosts"
+          target: "{{ Target }}"
+          Path: "{{ Path }}\\{{ FileName }}"
 
     - name: copy file
       fetch: 
-        src=C:/info.txt 
-        dest=~/info.txt 
+        src="{{ Path }}\\{{ FileName }}"
+        dest=~/{{ FileName }}
         flat=yes
 
+    - name: Ensure file is absent
+      ansible.windows.win_file:
+        path: "{{ Path }}\\{{ FileName }}"
+        state: absent
+
     - name: test output
-      command: cat ~/info.txt
+      command: cat ~/{{ FileName }}
       delegate_to: localhost
