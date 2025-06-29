@@ -1,0 +1,15 @@
+---
+- name: simple test windows connection
+  hosts: all
+  tasks:
+    - name: test win
+      win_ping:
+
+    - name: copy file
+      fetch: 
+        src=C:/info.txt 
+        dest=~/info.txt 
+        flat=yes
+
+    - name: test output
+      command: cat ~/info.txt
