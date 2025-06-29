@@ -13,3 +13,4 @@
 
     - name: test output
       command: cat ~/info.txt
+      delegate_to: localhost
