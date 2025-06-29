@@ -21,7 +21,7 @@
           Remove-PSSession -Session $session
         parameters:
           target: "dc01.tingnkai.com"
-          Path: "C:\Windows\System32\drivers\etc\hosts"
+          Path: "C:\\Windows\\System32\\drivers\\etc\\hosts"
 
     - name: copy file
       fetch: 
